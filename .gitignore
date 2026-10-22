@@ -1,0 +1,21 @@
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+
+# IDE and operating system
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Temporary files and logs
+*.log
+.streamlit/secrets.toml
+
+# Large or raw datasets - review these rules before publishing
+data/raw/
+data/*.csv

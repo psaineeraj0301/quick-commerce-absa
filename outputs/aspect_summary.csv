@@ -1,0 +1,31 @@
+app,aspect,mentions,positive_pct,negative_pct,neutral_pct,net_sentiment,negative_ci_lower,negative_ci_upper,mean_compound
+Blinkit,app_experience,294,70.41,16.67,12.93,53.74,12.84,21.35,0.3128
+Blinkit,customer_support,69,40.58,50.72,8.7,-10.14,39.21,62.17,-0.0857
+Blinkit,delivery_partner,36,41.67,38.89,19.44,2.78,24.78,55.14,0.0011
+Blinkit,delivery_speed,418,45.22,20.57,34.21,24.64,16.98,24.71,0.1507
+Blinkit,offers_discounts,30,43.33,26.67,30.0,16.67,14.18,44.45,0.1582
+Blinkit,order_accuracy_packaging,184,35.87,35.87,28.26,0.0,29.29,43.02,0.0147
+Blinkit,pricing_fees,112,32.14,43.75,24.11,-11.61,34.92,52.99,-0.0243
+Blinkit,product_availability,113,33.63,42.48,23.89,-8.85,33.76,51.69,-0.0387
+Blinkit,product_freshness_quality,43,41.86,53.49,4.65,-11.63,38.92,67.49,-0.0565
+Blinkit,refund_payment,94,20.21,47.87,31.91,-27.66,38.06,57.85,-0.1716
+Swiggy Instamart,app_experience,307,60.91,21.82,17.26,39.09,17.57,26.78,0.1938
+Swiggy Instamart,customer_support,93,31.18,61.29,7.53,-30.11,51.13,70.55,-0.1586
+Swiggy Instamart,delivery_partner,33,33.33,54.55,12.12,-21.21,37.99,70.16,-0.141
+Swiggy Instamart,delivery_speed,319,43.89,26.65,29.47,17.24,22.09,31.75,0.0797
+Swiggy Instamart,offers_discounts,103,57.28,12.62,30.1,44.66,7.53,20.4,0.2499
+Swiggy Instamart,order_accuracy_packaging,171,23.39,50.88,25.73,-27.49,43.45,58.27,-0.1438
+Swiggy Instamart,pricing_fees,105,41.9,22.86,35.24,19.05,15.87,31.76,0.0828
+Swiggy Instamart,product_availability,139,39.57,33.09,27.34,6.47,25.82,41.28,0.0031
+Swiggy Instamart,product_freshness_quality,92,43.48,40.22,16.3,3.26,30.78,50.43,-0.0225
+Swiggy Instamart,refund_payment,92,20.65,47.83,31.52,-27.17,37.91,57.91,-0.172
+Zepto,app_experience,450,43.78,42.22,14.0,1.56,37.74,46.83,-0.0012
+Zepto,customer_support,300,29.67,62.0,8.33,-32.33,56.39,67.31,-0.1976
+Zepto,delivery_partner,88,29.55,59.09,11.36,-29.55,48.65,68.77,-0.1644
+Zepto,delivery_speed,679,34.46,37.41,28.13,-2.95,33.85,41.11,-0.026
+Zepto,offers_discounts,85,49.41,24.71,25.88,24.71,16.76,34.83,0.1775
+Zepto,order_accuracy_packaging,371,18.6,53.1,28.3,-34.5,48.02,58.12,-0.206
+Zepto,pricing_fees,136,42.65,31.62,25.74,11.03,24.4,39.85,0.0746
+Zepto,product_availability,266,22.18,54.89,22.93,-32.71,48.88,60.76,-0.1927
+Zepto,product_freshness_quality,196,30.61,56.63,12.76,-26.02,49.63,63.38,-0.1613
+Zepto,refund_payment,265,21.13,58.11,20.75,-36.98,52.1,63.9,-0.2403

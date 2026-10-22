@@ -1,0 +1,10 @@
+google-play-scraper
+pandas
+numpy
+nltk
+scipy
+scikit-learn
+streamlit
+plotly
+matplotlib
+seaborn

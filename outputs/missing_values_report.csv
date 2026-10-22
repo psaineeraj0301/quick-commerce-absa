@@ -1,0 +1,15 @@
+column,missing_count,missing_percentage
+app,0,0.0
+app_id,0,0.0
+review_id_original,0,0.0
+review_text,0,0.0
+rating,0,0.0
+review_date,0,0.0
+thumbs_up,0,0.0
+app_version,0,0.0
+text_clean,0,0.0
+text_topic,0,0.0
+month,0,0.0
+n_words,0,0.0
+low_rating,0,0.0
+review_id,0,0.0
