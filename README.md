@@ -300,10 +300,5 @@ Open the local URL displayed in the terminal, typically `http://localhost:8501`.
 
 **Note:** The commands assume the required source files and dependencies are included and that input datasets are available. If datasets or outputs are excluded from GitHub, regenerate them locally or provide suitable setup instructions.
 
-## 15. Academic Context
 
-- **Programme:** MBA – Business Analytics and Marketing
-- **Institution:** GITAM School of Business, GITAM University
-- **Project type:** NLP Capstone Project
-- **Project title:** Aspect-Based Sentiment Analysis of Quick-Commerce App Reviews: A Comparative Study of Blinkit, Zepto, and Swiggy Instamart
 
