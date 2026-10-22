@@ -307,11 +307,3 @@ Open the local URL displayed in the terminal, typically `http://localhost:8501`.
 - **Project type:** NLP Capstone Project
 - **Project title:** Aspect-Based Sentiment Analysis of Quick-Commerce App Reviews: A Comparative Study of Blinkit, Zepto, and Swiggy Instamart
 
-## Author
-
-**Neeraj**  
-MBA – Business Analytics and Marketing
-
----
-
-This project is intended for academic and educational purposes. Please respect platform terms, data privacy, and applicable rules when collecting or sharing customer reviews.
