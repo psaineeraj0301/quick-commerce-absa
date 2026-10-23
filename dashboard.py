@@ -5,10 +5,7 @@ import plotly.express as px
 
 from config import OUTPUT_DIR, CLEAN_FILE, ASPECT_FILE
 
-
-# ============================================================
-# 1. PAGE CONFIGURATION
-# ============================================================
+# PAGE CONFIGURATION
 
 st.set_page_config(
     page_title="Quick-Commerce ABSA",
@@ -36,10 +33,7 @@ st.caption(
     "Zepto vs Blinkit vs Swiggy Instamart"
 )
 
-
-# ============================================================
-# 2. HELPER FUNCTIONS
-# ============================================================
+# HELPER FUNCTIONS
 
 def normalize_app_name(name):
     """Standardize app names for filtering and chart colours."""
@@ -226,10 +220,7 @@ def build_aspect_summary(absa):
         ]
     ]
 
-
-# ============================================================
-# 3. LOAD REQUIRED DATA
-# ============================================================
+# LOAD REQUIRED DATA
 
 required_files = [CLEAN_FILE, ASPECT_FILE]
 
@@ -267,10 +258,7 @@ summary = load_csv(OUTPUT_DIR / "aspect_summary.csv")
 if summary is None:
     summary = pd.DataFrame()
 
-
-# ============================================================
-# 4. NORMALIZE AND VALIDATE DATA
-# ============================================================
+# NORMALIZE AND VALIDATE DATA
 
 for data in (df, absa, summary):
     if "app" in data.columns:
@@ -435,10 +423,7 @@ if df.empty:
     )
     st.stop()
 
-
-# ============================================================
-# 5. SIDEBAR FILTERS
-# ============================================================
+# SIDEBAR FILTERS
 
 st.sidebar.header("Dashboard Filters")
 
@@ -520,10 +505,7 @@ if (
 if min_rating != 1 or max_rating != 5:
     filtered_summary = build_aspect_summary(filtered_absa)
 
-
-# ============================================================
-# 6. OVERVIEW AND KEY PERFORMANCE INDICATORS
-# ============================================================
+# OVERVIEW AND KEY PERFORMANCE INDICATORS
 
 st.subheader("Overview")
 
@@ -567,10 +549,7 @@ col4.metric(
 
 st.divider()
 
-
-# ============================================================
-# 7. STAR-RATING DISTRIBUTION
-# ============================================================
+# STAR-RATING DISTRIBUTION
 
 st.subheader("1. Star-rating distribution")
 
@@ -610,10 +589,7 @@ if not filtered_df.empty:
 else:
     empty_message("No rating data is available for this selection.")
 
-
-# ============================================================
-# 8. CUSTOMER SENTIMENT BY ASPECT - FIXED
-# ============================================================
+# CUSTOMER SENTIMENT BY ASPECT - FIXED
 
 st.subheader("2. Customer sentiment by aspect")
 
@@ -706,10 +682,7 @@ else:
         "then run pipeline.py."
     )
 
-
-# ============================================================
-# 9. NET SENTIMENT HEATMAP
-# ============================================================
+# NET SENTIMENT HEATMAP
 
 st.subheader("3. Net sentiment heatmap")
 
@@ -759,10 +732,7 @@ if not filtered_summary.empty:
 else:
     empty_message("No sentiment data is available for the heatmap.")
 
-
-# ============================================================
-# 10. ASPECT SUMMARY TABLE
-# ============================================================
+# ASPECT SUMMARY TABLE
 
 st.subheader("4. Aspect summary table")
 
@@ -786,9 +756,7 @@ else:
     empty_message("No aspect summary rows are available.")
 
 
-# ============================================================
-# 11. MOST DISCUSSED ASPECTS
-# ============================================================
+# MOST DISCUSSED ASPECTS
 
 st.subheader("5. What do customers talk about most?")
 
@@ -826,9 +794,7 @@ else:
     empty_message("No aspect mentions are available for this selection.")
 
 
-# ============================================================
-# 12. SENTIMENT DISTRIBUTION BY ASPECT
-# ============================================================
+# SENTIMENT DISTRIBUTION BY ASPECT
 
 st.subheader("6. Sentiment distribution by aspect")
 
@@ -880,10 +846,7 @@ if not filtered_absa.empty:
 else:
     empty_message("No sentiment records are available.")
 
-
-# ============================================================
-# 13. STATISTICAL TEST RESULTS
-# ============================================================
+# STATISTICAL TEST RESULTS
 
 st.subheader("7. Statistical test results")
 
@@ -932,10 +895,7 @@ with st.expander(
 
     show_result_table("negative_review_topics.csv")
 
-
-# ============================================================
-# 14. EXAMPLE CUSTOMER REVIEWS
-# ============================================================
+# EXAMPLE CUSTOMER REVIEWS
 
 st.subheader("8. Example customer reviews")
 
@@ -1029,10 +989,7 @@ if not filtered_absa.empty:
 else:
     empty_message("No example reviews are available for this selection.")
 
-
-# ============================================================
-# 15. METHODOLOGY AND LIMITATIONS
-# ============================================================
+# METHODOLOGY AND LIMITATIONS
 
 with st.expander("Methodology and limitations"):
     st.markdown(

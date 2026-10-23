@@ -30,10 +30,7 @@ from config import (
     RANDOM_STATE,
 )
 
-
-# ============================================================
-# 1. CONFIGURATION
-# ============================================================
+# CONFIGURATION
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 CLEAN_FILE.parent.mkdir(parents=True, exist_ok=True)
@@ -48,9 +45,7 @@ USE_SENTENCE_TOKENIZATION = True
 warnings.filterwarnings("ignore", category=FutureWarning)
 
 
-# ============================================================
-# 2. NLTK RESOURCES
-# ============================================================
+# NLTK RESOURCES
 
 def prepare_nltk_resources():
     resources = [
@@ -76,10 +71,7 @@ prepare_nltk_resources()
 sia = SentimentIntensityAnalyzer()
 lemmatizer = WordNetLemmatizer()
 
-
-# ============================================================
-# 3. ASPECT DEFINITIONS
-# ============================================================
+# ASPECT DEFINITIONS
 
 ASPECT_PATTERNS = {
     "delivery_speed": [
@@ -171,9 +163,8 @@ COMPILED_ASPECT_PATTERNS = {
 }
 
 
-# ============================================================
-# 4. LOAD CLEANED DATA
-# ============================================================
+# LOAD CLEANED DATA
+
 
 def load_clean_data():
     if not CLEAN_FILE.exists():
@@ -236,9 +227,8 @@ def load_clean_data():
     return df.reset_index(drop=True)
 
 
-# ============================================================
-# 5. SENTENCE AND CLAUSE PROCESSING
-# ============================================================
+# SENTENCE AND CLAUSE PROCESSING
+
 
 def split_sentences(text):
     text = str(text).strip()
@@ -280,9 +270,9 @@ def split_clauses(text):
     return clauses
 
 
-# ============================================================
-# 6. ASPECT DETECTION AND SENTIMENT
-# ============================================================
+
+# ASPECT DETECTION AND SENTIMENT
+
 
 def detect_clause_aspects(clause):
     return [
@@ -350,9 +340,8 @@ def detect_aspects_and_sentiment(df):
     return absa
 
 
-# ============================================================
-# 7. ASPECT SUMMARY
-# ============================================================
+# ASPECT SUMMARY
+
 
 def wilson_interval(successes, total, z=1.96):
     if total <= 0:
@@ -427,9 +416,7 @@ def create_summary(absa):
     return summary
 
 
-# ============================================================
-# 8. KRUSKAL-WALLIS TEST
-# ============================================================
+# KRUSKAL-WALLIS TEST
 
 def run_kruskal_wallis(df):
     output_file = OUTPUT_DIR / "kruskal_wallis.csv"
@@ -488,10 +475,7 @@ def run_kruskal_wallis(df):
     result.to_csv(output_file, index=False)
     return result
 
-
-# ============================================================
-# 9. CHI-SQUARE TESTS AND BONFERRONI CORRECTION
-# ============================================================
+# CHI-SQUARE TESTS AND BONFERRONI CORRECTION
 
 def cramers_v(contingency_table):
     n = contingency_table.to_numpy().sum()
@@ -567,9 +551,8 @@ def run_chi_square(absa):
     return results
 
 
-# ============================================================
-# 10. LEMMATIZATION AND TOPIC MODELLING
-# ============================================================
+# LEMMATIZATION AND TOPIC MODELLING
+
 
 def get_wordnet_pos(tag):
     if tag.startswith("J"):
@@ -707,9 +690,8 @@ def run_topic_modelling(df):
     return topics
 
 
-# ============================================================
-# 11. MANUAL VALIDATION SAMPLE
-# ============================================================
+
+# MANUAL VALIDATION SAMPLE
 
 def create_validation_sample(absa):
     output_file = OUTPUT_DIR / "manual_validation_sample.csv"
@@ -731,9 +713,9 @@ def create_validation_sample(absa):
     return sample
 
 
-# ============================================================
-# 12. VISUALIZATIONS
-# ============================================================
+
+# VISUALIZATIONS
+
 
 def create_visualizations(df, absa, summary):
     # Rating distribution.
@@ -870,9 +852,9 @@ def create_visualizations(df, absa, summary):
             plt.close()
 
 
-# ============================================================
-# 13. MAIN PIPELINE
-# ============================================================
+
+# MAIN PIPELINE
+
 
 def main():
     # Suppress normal output while the pipeline runs.
