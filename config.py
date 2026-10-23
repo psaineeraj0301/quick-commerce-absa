@@ -26,14 +26,6 @@ APPS = {
     "Swiggy Instamart": "in.swiggy.android.instamart",
 }
 
-SWIGGY_KEYWORD_FILTER = True
-
-SWIGGY_KEYWORDS = [
-    "instamart", "grocery", "groceries", "vegetable", "vegetables",
-    "fruit", "fruits", "milk", "bread", "eggs", "rice", "atta",
-    "grocery order", "dark store", "quick commerce", "quick delivery",
-    "zepto", "blinkit"
-]
 
 DATA_DIR.mkdir(exist_ok=True)
 OUTPUT_DIR.mkdir(exist_ok=True)
