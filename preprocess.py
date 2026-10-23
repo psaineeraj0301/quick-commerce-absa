@@ -9,19 +9,16 @@ from config import (
     OUTPUT_DIR,
     LOW_RATING_MAX,
 )
-
-
-# ============================================================
-# 1. CONFIGURATION
-# ============================================================
+    
+# CONFIGURATION
 
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 CLEAN_FILE.parent.mkdir(parents=True, exist_ok=True)
 
 
-# ============================================================
-# 2. CONTRACTION EXPANSION
-# ============================================================
+
+# CONTRACTION EXPANSION
+
 
 CONTRACTIONS = {
     "didn't": "did not",
@@ -86,9 +83,9 @@ def expand_contractions(text):
     return text
 
 
-# ============================================================
-# 3. SELECTIVE ABBREVIATION EXPANSION
-# ============================================================
+
+# SELECTIVE ABBREVIATION EXPANSION
+
 
 ABBREVIATIONS = {
     "pls": "please",
@@ -124,9 +121,7 @@ def expand_abbreviations(text):
     return text
 
 
-# ============================================================
-# 4. HTML/XML TAG AND URL REMOVAL
-# ============================================================
+# HTML/XML TAG AND URL REMOVAL
 
 def remove_html_xml_and_urls(text):
     """Remove URLs, email addresses and HTML/XML markup."""
@@ -159,10 +154,7 @@ def remove_html_xml_and_urls(text):
 
     return text
 
-
-# ============================================================
-# 5. TEXT CLEANING AND NORMALIZATION
-# ============================================================
+# TEXT CLEANING AND NORMALIZATION
 
 def prepare_base_text(text):
     """
@@ -218,10 +210,7 @@ def create_topic_text(text):
 
     return text
 
-
-# ============================================================
-# 6. DEVANAGARI-SCRIPT FILTER
-# ============================================================
+# DEVANAGARI-SCRIPT FILTER
 
 DEVANAGARI = re.compile(r"[\u0900-\u097F]")
 
@@ -248,15 +237,12 @@ def devanagari_ratio(text):
     return devanagari_letters / len(letters)
 
 
-# ============================================================
-# 7. PREPROCESS RAW DATA
-# ============================================================
+# PREPROCESS RAW DATA
 
 def preprocess_data():
 
-    # --------------------------------------------------------
-    # 7.1 LOAD RAW DATA
-    # --------------------------------------------------------
+    # LOAD RAW DATA
+
 
     if not RAW_FILE.exists():
         raise FileNotFoundError(
@@ -284,9 +270,7 @@ def preprocess_data():
 
     print("Original dataset shape:", df.shape)
 
-    # --------------------------------------------------------
-    # 7.2 REMOVE MISSING AND EMPTY REVIEWS
-    # --------------------------------------------------------
+    # EMOVE MISSING AND EMPTY REVIEWS
 
     df = df.dropna(
         subset=["app", "review_text", "rating"]
@@ -303,9 +287,9 @@ def preprocess_data():
         & df["review_text"].ne("")
     ].copy()
 
-    # --------------------------------------------------------
-    # 7.3 VALIDATE RATINGS
-    # --------------------------------------------------------
+
+    # VALIDATE RATINGS
+
 
     df["rating"] = pd.to_numeric(
         df["rating"],
@@ -319,9 +303,9 @@ def preprocess_data():
 
     df["rating"] = df["rating"].astype(int)
 
-    # --------------------------------------------------------
-    # 7.4 REMOVE DUPLICATE REVIEWS
-    # --------------------------------------------------------
+
+    # REMOVE DUPLICATE REVIEWS
+
 
     normalized_text = (
         df["review_text"]
@@ -361,9 +345,9 @@ def preprocess_data():
 
     print("Shape after duplicate removal:", df.shape)
 
-    # --------------------------------------------------------
-    # 7.5 FILTER PREDOMINANTLY DEVANAGARI REVIEWS
-    # --------------------------------------------------------
+    
+    # FILTER PREDOMINANTLY DEVANAGARI REVIEWS
+
 
     before_language_filter = len(df)
 
@@ -383,10 +367,9 @@ def preprocess_data():
         df.shape,
     )
 
-    # --------------------------------------------------------
-    # 7.6 CREATE SEPARATE TEXT COLUMNS
-    # --------------------------------------------------------
-
+   
+    # CREATE SEPARATE TEXT COLUMNS
+   
     # For aspect detection and VADER.
     df["text_clean"] = (
         df["review_text"].apply(clean_text)
@@ -411,9 +394,9 @@ def preprocess_data():
         )
     ].copy()
 
-    # --------------------------------------------------------
-    # 7.7 STANDARDIZE DATES
-    # --------------------------------------------------------
+   
+    # STANDARDIZE DATES
+ 
 
     if "review_date" in df.columns:
 
@@ -431,9 +414,9 @@ def preprocess_data():
         df["review_date"] = pd.NaT
         df["month"] = pd.NA
 
-    # --------------------------------------------------------
-    # 7.8 HANDLE OPTIONAL METADATA
-    # --------------------------------------------------------
+
+    # HANDLE OPTIONAL METADATA
+  
 
     if "app_version" in df.columns:
         df["app_version"] = (
@@ -450,9 +433,9 @@ def preprocess_data():
     else:
         df["thumbs_up"] = 0
 
-    # --------------------------------------------------------
-    # 7.9 CREATE ANALYSIS COLUMNS
-    # --------------------------------------------------------
+        
+    # CREATE ANALYSIS COLUMNS
+
 
     df["n_words"] = (
         df["text_clean"].str.split().str.len()
@@ -467,9 +450,9 @@ def preprocess_data():
     # Unique row ID for downstream analysis.
     df["review_id"] = range(len(df))
 
-    # --------------------------------------------------------
-    # 7.10 DATA QUALITY REPORTS
-    # --------------------------------------------------------
+    
+    # DATA QUALITY REPORTS
+   
 
     missing_report = pd.DataFrame({
         "column": df.columns,
@@ -524,9 +507,9 @@ def preprocess_data():
         lambda text: emoji.emoji_count(str(text)) > 0
     ).sum()
 
-    # --------------------------------------------------------
-    # 7.11 PRINT REPORTS
-    # --------------------------------------------------------
+   
+    # PRINT REPORTS
+   
 
     print("\nFinal dataset shape:", df.shape)
 
@@ -561,9 +544,9 @@ def preprocess_data():
         print("Clean text:", example["text_clean"])
         print("Topic text:", example["text_topic"])
 
-    # --------------------------------------------------------
-    # 7.12 SAVE CLEANED DATA
-    # --------------------------------------------------------
+   
+    # SAVE CLEANED DATA
+    
 
     df.to_csv(
         CLEAN_FILE,
@@ -575,10 +558,7 @@ def preprocess_data():
 
     return df
 
-
-# ============================================================
-# 8. RUN SCRIPT
-# ============================================================
+# RUN SCRIPT
 
 if __name__ == "__main__":
     preprocess_data()
