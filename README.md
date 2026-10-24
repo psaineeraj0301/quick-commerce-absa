@@ -359,3 +359,29 @@ quick-commerce-absa/
 └── outputs/
     ├── aspect_mentions.csv
     └── generated analysis outputs
+```
+
+## 14. Installation and Usage
+
+### 14.1 Create a virtual environment
+
+```bash
+python -m venv .venv
+```
+
+### 14.2 Install dependencies
+
+```bash
+python -m pip install -r requirements.txt
+```
+### 14.3 Run the pipeline
+
+```bash
+python pipeline.py
+```
+
+### 14.4 Launch the dashboard
+
+```bash
+python -m streamlit run dashboard.py
+```
