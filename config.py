@@ -8,8 +8,8 @@ RAW_FILE = DATA_DIR / "raw_reviews.csv"
 CLEAN_FILE = DATA_DIR / "clean_reviews.csv"
 ASPECT_FILE = DATA_DIR / "aspect_mentions.csv"
 
-REVIEWS_PER_APP = 2000
-BATCH_SIZE = 200
+REVIEWS_PER_APP = 10000
+BATCH_SIZE = 500
 LANGUAGE = "en"
 COUNTRY = "in"
 REQUEST_PAUSE_SECONDS = 1

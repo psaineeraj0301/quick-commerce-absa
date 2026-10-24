@@ -1,2 +1,2 @@
 test,statistic,p_value,alpha,significant,effect_size_epsilon_squared,apps_compared,interpretation
-Kruskal-Wallis,145.6966515460641,2.3034251314397918e-32,0.05,True,0.02467318879568408,"Blinkit, Swiggy Instamart, Zepto",At least one app's rating distribution differs.
+Kruskal-Wallis,1095.1942492646567,1.5191143495214442e-238,0.05,True,0.03744970193774303,"Blinkit, Swiggy Instamart, Zepto",At least one app's rating distribution differs.
